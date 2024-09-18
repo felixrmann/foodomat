@@ -6,10 +6,15 @@
 /out-tsc
 /bazel-out
 
+.idea
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+src/foodomat/node_modules
+src/foodomat/dist
+src/foodomat/npm-debug.log
+src/foodomat/yarn-error.log
+
+src/foodomat-ui/.angular
+src/foodomat-ui/node_modules
 
 # IDEs and editors
 src/.idea/
@@ -19,14 +24,6 @@ src/.idea/
 *.launch
 .settings/
 *.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
 
 # Miscellaneous
 /.angular/cache
