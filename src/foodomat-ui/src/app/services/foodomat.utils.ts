@@ -13,6 +13,10 @@ export function getCurrentYear(): number {
   return new Date().getFullYear();
 }
 
+export function getCurrentMonth(): Month {
+  return new Date().getMonth();
+}
+
 export const defaultFood: Planable[] = [
   {
     id: 1111111,

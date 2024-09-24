@@ -1,6 +1,7 @@
 import { Recipe } from './recipe.types';
 
 export type PlanableMonth = {
+  id: number;
   month: Month;
   year: number;
   planables: Planable[];

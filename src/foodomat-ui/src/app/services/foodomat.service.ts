@@ -3,7 +3,7 @@ import { Month, Planable, PlanableMonth } from '../../../../shared/types/planner
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import {
   defaultFood,
-  getAmountOfDaysInMonth,
+  getAmountOfDaysInMonth, getCurrentMonth,
   getCurrentYear,
   getRandomId
 } from './foodomat.utils';
@@ -58,10 +58,19 @@ export class FoodomatService {
 
   public activeMonth: Observable<PlanableMonth> = this.planablesGroupedByMonth.pipe(
     map((groupedMonths: PlanableMonth[]): PlanableMonth => {
-      const activeMonth: PlanableMonth | undefined = groupedMonths.find((month: PlanableMonth) => month.active);
+      let activeMonth: PlanableMonth | undefined = groupedMonths.find((month: PlanableMonth) => month.active);
 
       if (!activeMonth) {
-        activeMonth =
+        activeMonth = groupedMonths.find((month: PlanableMonth) => month.month === getCurrentMonth());
+
+        if (!activeMonth) {
+          activeMonth = {
+            month: getCurrentMonth(),
+            year: getCurrentYear(),
+            planables: [],
+            active: true,
+          }
+        }
       }
       return activeMonth;
     })
