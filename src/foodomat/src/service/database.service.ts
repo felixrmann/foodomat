@@ -1,19 +1,15 @@
 import { Recipe } from '../../../shared/types/recipe.types';
 import { PrismaClient } from '@prisma/client';
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import * as process from 'node:process';
 
 @Injectable()
-export class DatabaseService implements OnModuleInit {
+export class DatabaseService {
 
   private database: PrismaClient;
 
   constructor() {
     this.database = new PrismaClient();
-  }
-
-  onModuleInit() {
-   // await this.database.$connect();
   }
 
   public async initDatabase(): Promise<void> {

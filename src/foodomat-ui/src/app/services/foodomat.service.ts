@@ -46,6 +46,7 @@ export class FoodomatService {
         }
 
         fullGroupedMonths.push({
+          id: 123,
           month: month,
           year: yearToLook ?? getCurrentYear(),
           active: false,
@@ -65,6 +66,7 @@ export class FoodomatService {
 
         if (!activeMonth) {
           activeMonth = {
+            id: 123,
             month: getCurrentMonth(),
             year: getCurrentYear(),
             planables: [],
