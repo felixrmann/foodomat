@@ -14,7 +14,7 @@ export class DatabaseService {
 
   public async initDatabase(): Promise<void> {
     await this.database.$connect();
-    console.log(`Connected to database: ${ process.env.DATABASE_URL }`);
+    console.info(`Connected to database: ${ process.env.DATABASE_NAME }, schema ${ process.env.DATABASE_SCHEMA }`);
   }
 
   public addRecipe(recipe: Recipe): boolean {
