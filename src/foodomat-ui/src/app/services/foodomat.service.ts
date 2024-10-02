@@ -1,21 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Month, Planable, PlanableMonth } from '../../../../shared/types/planner.types';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import {
-  defaultFood,
-  getAmountOfDaysInMonth, getCurrentMonth,
-  getCurrentYear,
-  getRandomId
-} from './foodomat.utils';
+import { Planable, PlanableMonth } from '../types/planner.types';
+import { Month } from '../../../../shared/contract';
+import { defaultFood, getAmountOfDaysInMonth, getCurrentMonth, getCurrentYear, getRandomId } from './foodomat.utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FoodomatService {
+  public activeMonth: Observable<PlanableMonth> = this.planablesGroupedByMonth.pipe(
+    map((groupedMonths: PlanableMonth[]): PlanableMonth => {
+      let activeMonth: PlanableMonth | undefined = groupedMonths.find((month: PlanableMonth) => month.active);
 
+      if (!activeMonth) {
+        activeMonth = groupedMonths.find((month: PlanableMonth) => month.month === getCurrentMonth());
+
+        if (!activeMonth) {
+          activeMonth = {
+            id: 123,
+            month: getCurrentMonth(),
+            year: getCurrentYear(),
+            planables: [],
+            active: true,
+          }
+        }
+      }
+      return activeMonth;
+    })
+  );
   private allPlanables: BehaviorSubject<ReadonlyArray<Planable>> = new BehaviorSubject<ReadonlyArray<Planable>>([]);
-  private _allPlanables: ReadonlyArray<Planable> = defaultFood;
-
   public planablesGroupedByMonth: Observable<PlanableMonth[]> = this.allPlanables.pipe(
     map((allPlanables: ReadonlyArray<Planable>): PlanableMonth[] => {
       const groupedPlanables: Map<Month, Planable[]> = new Map();
@@ -56,27 +69,7 @@ export class FoodomatService {
       return fullGroupedMonths;
     }),
   );
-
-  public activeMonth: Observable<PlanableMonth> = this.planablesGroupedByMonth.pipe(
-    map((groupedMonths: PlanableMonth[]): PlanableMonth => {
-      let activeMonth: PlanableMonth | undefined = groupedMonths.find((month: PlanableMonth) => month.active);
-
-      if (!activeMonth) {
-        activeMonth = groupedMonths.find((month: PlanableMonth) => month.month === getCurrentMonth());
-
-        if (!activeMonth) {
-          activeMonth = {
-            id: 123,
-            month: getCurrentMonth(),
-            year: getCurrentYear(),
-            planables: [],
-            active: true,
-          }
-        }
-      }
-      return activeMonth;
-    })
-  )
+  private _allPlanables: ReadonlyArray<Planable> = defaultFood;
 
   constructor() {
     this.renderChanges();
