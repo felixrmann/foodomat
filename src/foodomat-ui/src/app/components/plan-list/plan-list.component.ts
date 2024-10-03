@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PlanableMonth } from '../../../../../shared/types/planner.types';
+import { PlanableMonth } from '../../types/planner.types';
 
 @Component({
   selector: 'foodomat-plan-list',

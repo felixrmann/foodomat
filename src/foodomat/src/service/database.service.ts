@@ -1,7 +1,7 @@
-import { Recipe } from '../../../shared/types/recipe.types';
 import { PrismaClient } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
 import * as process from 'node:process';
+import { RecipeDto } from '../../../shared/contract';
 
 @Injectable()
 export class DatabaseService {
@@ -17,7 +17,7 @@ export class DatabaseService {
     console.info(`Connected to database: ${ process.env.DATABASE_NAME }, schema ${ process.env.DATABASE_SCHEMA }`);
   }
 
-  public addRecipe(recipe: Recipe): boolean {
+  public addRecipe(recipe: RecipeDto): boolean {
     return false;
   }
 

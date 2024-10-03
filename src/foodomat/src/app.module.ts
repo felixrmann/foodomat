@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseService } from './service/database.service';
 import { PlannerService } from './service/planner.service';
 import configuration from '../config/configuration';
+import { PlannerController } from './controller/planner.controller';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import configuration from '../config/configuration';
       load: [configuration],
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, PlannerController],
   providers: [AppService, PlannerService, {
     provide: DatabaseService,
     useFactory: async () => {

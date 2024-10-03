@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Recipe } from '../../../shared/types/recipe.types';
+import { RecipeDto } from '../../../shared/contract';
 
 @Injectable()
 export class RecipeService {
-  public async addRecipe(recipe: Recipe) {
+  public async addRecipe(recipe: RecipeDto) {
     return;
   }
 }

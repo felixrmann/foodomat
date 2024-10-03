@@ -1,14 +1,17 @@
 :host {
-  display: grid;
-  grid-gap: .5em;
-  padding: .5em;
+  background-color: #6D5D6E;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 
-.c-header {
+header {
+  height: fit-content;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
 }
 
 h3 {

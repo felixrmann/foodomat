@@ -1,0 +1,18 @@
+:host {
+  width: 3em;
+  height: 3em;
+
+  background-color: #aa40b1;
+  border-radius: 100%;
+  transition: 0.3s cubic-bezier(0.5, 0, 0.75, 0);
+}
+
+:host:hover {
+  border-radius: 0 0 100% 0;
+  background-color: floralwhite;
+  transform: scale(5) translate(40%, 40%);
+}
+
+.foodomat-nav__default {
+
+}
