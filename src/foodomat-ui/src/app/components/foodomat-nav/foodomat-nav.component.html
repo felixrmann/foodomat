@@ -1,15 +1,33 @@
-<svg class="foodomat-nav__default" height="3em" width="3em">
-  <g fill="none" stroke="black" stroke-width="2.3">
-    <path d="M14 17 l20 0" stroke-linecap="round"></path>
-    <path d="M14 24 l20 0" stroke-linecap="round"></path>
-    <path d="M14 31 l20 0" stroke-linecap="round"></path>
-  </g>
-</svg>
-<div class="foodomat-nav__open">
-  <svg class="foodomat-nav__option foodomat-nav__settings" fill="" width="3em" height="3em" viewBox="0 0 45.973 45.973">
-    <g>
-      <path
-        d="M43.454,18.443h-2.437c-0.453-1.766-1.16-3.42-2.082-4.933l1.752-1.756c0.473-0.473,0.733-1.104,0.733-1.774
+<div [ngClass]="{'foodomat-nav__active': active}">
+  <svg (click)="active = true"
+       class="foodomat-nav__default" height="3em" width="3em">
+    <g fill="none" stroke="black" stroke-width="2.3">
+      <path d="M14 17 l20 0" stroke-linecap="round"></path>
+      <path d="M14 24 l20 0" stroke-linecap="round"></path>
+      <path d="M14 31 l20 0" stroke-linecap="round"></path>
+    </g>
+  </svg>
+  <div class="foodomat-nav__open">
+    <svg (click)="active = false" class="foodomat-nav__option foodomat-nav__close"
+         fill="none" height="3em" viewBox="0 -0.5 25 25" width="3em">
+      <path d="M6.96967 16.4697C6.67678 16.7626 6.67678 17.2374 6.96967 17.5303C7.26256 17.8232 7.73744 17.8232
+    8.03033 17.5303L6.96967 16.4697ZM13.0303 12.5303C13.3232 12.2374 13.3232 11.7626 13.0303 11.4697C12.7374
+    11.1768 12.2626 11.1768 11.9697 11.4697L13.0303 12.5303ZM11.9697 11.4697C11.6768 11.7626 11.6768 12.2374
+    11.9697 12.5303C12.2626 12.8232 12.7374 12.8232 13.0303 12.5303L11.9697 11.4697ZM18.0303 7.53033C18.3232
+    7.23744 18.3232 6.76256 18.0303 6.46967C17.7374 6.17678 17.2626 6.17678 16.9697 6.46967L18.0303 7.53033ZM13.0303
+    11.4697C12.7374 11.1768 12.2626 11.1768 11.9697 11.4697C11.6768 11.7626 11.6768 12.2374 11.9697 12.5303L13.0303
+    11.4697ZM16.9697 17.5303C17.2626 17.8232 17.7374 17.8232 18.0303 17.5303C18.3232 17.2374 18.3232 16.7626 18.0303
+    16.4697L16.9697 17.5303ZM11.9697 12.5303C12.2626 12.8232 12.7374 12.8232 13.0303 12.5303C13.3232 12.2374 13.3232
+    11.7626 13.0303 11.4697L11.9697 12.5303ZM8.03033 6.46967C7.73744 6.17678 7.26256 6.17678 6.96967 6.46967C6.67678
+    6.76256 6.67678 7.23744 6.96967 7.53033L8.03033 6.46967ZM8.03033 17.5303L13.0303 12.5303L11.9697 11.4697L6.96967
+    16.4697L8.03033 17.5303ZM13.0303 12.5303L18.0303 7.53033L16.9697 6.46967L11.9697 11.4697L13.0303 12.5303ZM11.9697
+    12.5303L16.9697 17.5303L18.0303 16.4697L13.0303 11.4697L11.9697 12.5303ZM13.0303 11.4697L8.03033 6.46967L6.96967
+    7.53033L11.9697 12.5303L13.0303 11.4697Z" fill="#000000"/>
+    </svg>
+    <svg class="foodomat-nav__option foodomat-nav__settings" fill="black" height="3em" viewBox="0 0 45.973 45.973" width="3em">
+      <g>
+        <path
+          d="M43.454,18.443h-2.437c-0.453-1.766-1.16-3.42-2.082-4.933l1.752-1.756c0.473-0.473,0.733-1.104,0.733-1.774
       c0-0.669-0.262-1.301-0.733-1.773l-2.92-2.917c-0.947-0.948-2.602-0.947-3.545-0.001l-1.826,1.815
       C30.9,6.232,29.296,5.56,27.529,5.128V2.52c0-1.383-1.105-2.52-2.488-2.52h-4.128c-1.383,0-2.471,1.137-2.471,2.52v2.607
       c-1.766,0.431-3.38,1.104-4.878,1.977l-1.825-1.815c-0.946-0.948-2.602-0.947-3.551-0.001L5.27,8.205
@@ -22,47 +40,47 @@
       c0.92-1.514,1.627-3.179,2.08-4.943h2.438c1.383,0,2.52-1.087,2.52-2.471v-4.125C45.973,19.555,44.837,18.443,43.454,18.443z
       M22.976,30.85c-4.378,0-7.928-3.517-7.928-7.852c0-4.338,3.55-7.85,7.928-7.85c4.379,0,7.931,3.512,7.931,7.85
       C30.906,27.334,27.355,30.85,22.976,30.85z" />
-    </g>
-  </svg>
-  <svg class="foodomat-nav__option foodomat-nav__recipe" fill="#000000" width="3em" height="3em" viewBox="0 0 32 32">
-    <rect height="1" transform="translate(20 51) rotate(180)" width="16" x="2" y="25" />
-    <rect height="1" transform="translate(26 59) rotate(180)" width="16" x="5" y="29" />
-    <rect height="1" transform="translate(39 -8) rotate(90)" width="19" x="14" y="15" />
-    <rect height="1" transform="translate(21 10) rotate(90)" width="19" x="-4" y="15" />
-    <path d="M24,25H23v2a2,2,0,0,1-2,2H20v1h1a3,3,0,0,0,3-3Z" />
-    <path d="M17,26h1v1a2,2,0,0,0,2,2h1v1H20a3,3,0,0,1-3-3Z" />
-    <path d="M2,26H3v1a2,2,0,0,0,2,2H6v1H5a3,3,0,0,1-3-3Z" />
-    <rect height="1" width="6" x="24" y="6" />
-    <rect height="1" width="19" x="8" y="2" />
-    <path d="M5,6H6V5A2,2,0,0,1,8,3H9V2H8A3,3,0,0,0,5,5Z" />
-    <path d="M23,6h1V5a2,2,0,0,1,2-2h1V2H26a3,3,0,0,0-3,3Z" />
-    <path d="M30,6H29V5a2,2,0,0,0-2-2H26V2h1a3,3,0,0,1,3,3Z" />
-  </svg>
-  <svg class="foodomat-nav__option foodomat-nav__planner" width="3em" height="3em" viewBox="0 0 24 24" fill="none">
-    <g id="style=stroke">
-      <g id="calendar-cells">
-        <path id="rectangle (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-              d="M1.25 8C1.25 5.37665 3.37665 3.25 6 3.25H18C20.6234 3.25 22.75 5.37665 22.75 8V18C22.75 20.6234 20.6234
-              22.75 18 22.75H6C3.37665 22.75 1.25 20.6234 1.25 18V8ZM6 4.75C4.20507 4.75 2.75 6.20507 2.75 8V18C2.75
-              19.7949 4.20507 21.25 6 21.25H18C19.7949 21.25 21.25 19.7949 21.25 18V8C21.25 6.20507 19.7949 4.75 18 4.75H6Z"
-              fill="#000000" />
-        <rect id="vector" x="7" y="9.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_2" x="11" y="9.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_3" x="15" y="9.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_4" x="7" y="12.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_5" x="7" y="15.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_6" x="11" y="12.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_7" x="11" y="15.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_8" x="15" y="12.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <rect id="vector_9" x="15" y="15.5" width="2" height="2" rx="0.5" fill="#000000" />
-        <path id="line (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-              d="M8 1.25C8.41421 1.25 8.75 1.58579 8.75 2V5.5C8.75 5.91421 8.41421 6.25 8 6.25C7.58579 6.25 7.25 5.91421 7.25 5.5V2C7.25 1.58579 7.58579 1.25 8 1.25Z"
-              fill="#000000" />
-        <path id="line (Stroke)_2" fill-rule="evenodd" clip-rule="evenodd"
-              d="M16 1.25C16.4142 1.25 16.75 1.58579 16.75 2V5.5C16.75 5.91421 16.4142 6.25 16 6.25C15.5858 6.25 15.25 5.91421 15.25 5.5V2C15.25 1.58579 15.5858 1.25 16 1.25Z"
-              fill="#000000" />
       </g>
-    </g>
-  </svg>
+    </svg>
+    <svg class="foodomat-nav__option foodomat-nav__recipe" fill="black" height="3em" viewBox="0 0 32 32" width="3em">
+      <rect height="1" transform="translate(20 51) rotate(180)" width="16" x="2" y="25" />
+      <rect height="1" transform="translate(26 59) rotate(180)" width="16" x="5" y="29" />
+      <rect height="1" transform="translate(39 -8) rotate(90)" width="19" x="14" y="15" />
+      <rect height="1" transform="translate(21 10) rotate(90)" width="19" x="-4" y="15" />
+      <path d="M24,25H23v2a2,2,0,0,1-2,2H20v1h1a3,3,0,0,0,3-3Z" />
+      <path d="M17,26h1v1a2,2,0,0,0,2,2h1v1H20a3,3,0,0,1-3-3Z" />
+      <path d="M2,26H3v1a2,2,0,0,0,2,2H6v1H5a3,3,0,0,1-3-3Z" />
+      <rect height="1" width="6" x="24" y="6" />
+      <rect height="1" width="19" x="8" y="2" />
+      <path d="M5,6H6V5A2,2,0,0,1,8,3H9V2H8A3,3,0,0,0,5,5Z" />
+      <path d="M23,6h1V5a2,2,0,0,1,2-2h1V2H26a3,3,0,0,0-3,3Z" />
+      <path d="M30,6H29V5a2,2,0,0,0-2-2H26V2h1a3,3,0,0,1,3,3Z" />
+    </svg>
+    <svg class="foodomat-nav__option foodomat-nav__planner" fill="none" height="3em" viewBox="0 0 24 24" width="3em">
+      <g id="style=stroke">
+        <g id="calendar-cells">
+          <path clip-rule="evenodd" d="M1.25 8C1.25 5.37665 3.37665 3.25 6 3.25H18C20.6234 3.25 22.75 5.37665 22.75 8V18C22.75 20.6234 20.6234
+              22.75 18 22.75H6C3.37665 22.75 1.25 20.6234 1.25 18V8ZM6 4.75C4.20507 4.75 2.75 6.20507 2.75 8V18C2.75
+              19.7949 4.20507 21.25 6 21.25H18C19.7949 21.25 21.25 19.7949 21.25 18V8C21.25 6.20507 19.7949 4.75 18 4.75H6Z" fill="#000000"
+                fill-rule="evenodd"
+                id="rectangle (Stroke)" />
+          <rect fill="#000000" height="2" id="vector" rx="0.5" width="2" x="7" y="9.5" />
+          <rect fill="#000000" height="2" id="vector_2" rx="0.5" width="2" x="11" y="9.5" />
+          <rect fill="#000000" height="2" id="vector_3" rx="0.5" width="2" x="15" y="9.5" />
+          <rect fill="#000000" height="2" id="vector_4" rx="0.5" width="2" x="7" y="12.5" />
+          <rect fill="#000000" height="2" id="vector_5" rx="0.5" width="2" x="7" y="15.5" />
+          <rect fill="#000000" height="2" id="vector_6" rx="0.5" width="2" x="11" y="12.5" />
+          <rect fill="#000000" height="2" id="vector_7" rx="0.5" width="2" x="11" y="15.5" />
+          <rect fill="#000000" height="2" id="vector_8" rx="0.5" width="2" x="15" y="12.5" />
+          <rect fill="#000000" height="2" id="vector_9" rx="0.5" width="2" x="15" y="15.5" />
+          <path clip-rule="evenodd" d="M8 1.25C8.41421 1.25 8.75 1.58579 8.75 2V5.5C8.75 5.91421 8.41421 6.25 8 6.25C7.58579 6.25 7.25 5.91421 7.25 5.5V2C7.25 1.58579 7.58579 1.25 8 1.25Z" fill="#000000"
+                fill-rule="evenodd"
+                id="line (Stroke)" />
+          <path clip-rule="evenodd" d="M16 1.25C16.4142 1.25 16.75 1.58579 16.75 2V5.5C16.75 5.91421 16.4142 6.25 16 6.25C15.5858 6.25 15.25 5.91421 15.25 5.5V2C15.25 1.58579 15.5858 1.25 16 1.25Z" fill="#000000"
+                fill-rule="evenodd"
+                id="line (Stroke)_2" />
+        </g>
+      </g>
+    </svg>
+  </div>
 </div>
-

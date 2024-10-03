@@ -11,11 +11,18 @@
   transition: all .3s cubic-bezier(0.5, 0, 0.75, 0);
 }
 
-:host:hover {
-  border-radius: 17% 5% 100% 5%;
+.foodomat-nav__default {
+  height: 3em;
+  width: 3em;
+  opacity: 1;
+  transition: opacity .9s;
+}
+
+.foodomat-nav__active {
+  border-radius: 15% 5% 100% 5%;
   background-color: $dark-surface-color;
-  width: 10em;
-  height: 10em;
+  width: 12em;
+  height: 12em;
 
   .foodomat-nav__default {
     height: 0;
@@ -31,7 +38,8 @@
 
   .foodomat-nav__settings,
   .foodomat-nav__recipe,
-  .foodomat-nav__planner {
+  .foodomat-nav__planner,
+  .foodomat-nav__close {
     padding: .2em;
     height: 3em;
     width: 3em;
@@ -39,23 +47,16 @@
   }
 
   .foodomat-nav__settings {
-    transform: translate(5.8em, 0.5em);
+    transform: translate(7.8em, 0.5em);
   }
 
   .foodomat-nav__recipe {
-    transform: translate(4em, 4em);
+    transform: translate(5em, 5em);
   }
 
   .foodomat-nav__planner {
-    transform: translate(0.5em, 5.8em);
+    transform: translate(0.5em, 7.8em);
   }
-}
-
-.foodomat-nav__default {
-  height: 3em;
-  width: 3em;
-  opacity: 1;
-  transition: opacity .9s;
 }
 
 .foodomat-nav__open {
