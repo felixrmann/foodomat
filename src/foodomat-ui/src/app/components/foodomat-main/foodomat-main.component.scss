@@ -1,5 +1,7 @@
+@import "../../../styles.scss";
+
 :host {
-  background-color: #6D5D6E;
+  background-color: $dark-background-color;
 
   display: flex;
   flex-direction: column;
@@ -8,14 +10,23 @@
 }
 
 header {
-  height: fit-content;
-
-  display: flex;
-  justify-content: space-between;
+  padding: .4em;
+  height: 3em;
 }
 
 h3 {
+  float: right;
+
   font-size: x-large;
   margin: 0;
   padding: .3em;
+}
+
+.foodomat-main__custom-border {
+  height: 0;
+  width: 98%;
+  margin-left: 1%;
+  margin-bottom: .5em;
+
+  border-bottom: $dark-primary-color 1px solid;
 }

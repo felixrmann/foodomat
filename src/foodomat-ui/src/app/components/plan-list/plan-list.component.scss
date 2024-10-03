@@ -1,5 +1,7 @@
+@import "../../../styles.scss";
+
 :host {
-  background-color: aqua;
+  background-color: $dark-background-color;
   width: 100%;
   height: 100%;
 }
@@ -15,11 +17,12 @@
   width: 14.286%;
   text-align: center;
   font-size: large;
+  font-weight: 600;
   padding: .6em;
 }
 
 .c-weekday__border-right {
-  border-right: solid black .5px;
+  border-right: solid $dark-surface-color .5px ;
 }
 
 .c-planning-list__container {

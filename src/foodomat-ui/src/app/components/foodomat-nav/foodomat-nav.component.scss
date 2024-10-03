@@ -1,18 +1,86 @@
+@import "../../../styles.scss";
+
 :host {
+  position: absolute;
+
   width: 3em;
   height: 3em;
 
-  background-color: #aa40b1;
+  background-color: $dark-surface-color;
   border-radius: 100%;
-  transition: 0.3s cubic-bezier(0.5, 0, 0.75, 0);
+  transition: all .3s cubic-bezier(0.5, 0, 0.75, 0);
 }
 
 :host:hover {
-  border-radius: 0 0 100% 0;
-  background-color: floralwhite;
-  transform: scale(5) translate(40%, 40%);
+  border-radius: 17% 5% 100% 5%;
+  background-color: $dark-surface-color;
+  width: 10em;
+  height: 10em;
+
+  .foodomat-nav__default {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+
+  .foodomat-nav__open {
+    display: contents;
+    height: 10em;
+    width: 10em;
+  }
+
+  .foodomat-nav__settings,
+  .foodomat-nav__recipe,
+  .foodomat-nav__planner {
+    padding: .2em;
+    height: 3em;
+    width: 3em;
+    opacity: 1;
+  }
+
+  .foodomat-nav__settings {
+    transform: translate(5.8em, 0.5em);
+  }
+
+  .foodomat-nav__recipe {
+    transform: translate(4em, 4em);
+  }
+
+  .foodomat-nav__planner {
+    transform: translate(0.5em, 5.8em);
+  }
 }
 
 .foodomat-nav__default {
+  height: 3em;
+  width: 3em;
+  opacity: 1;
+  transition: opacity .9s;
+}
 
+.foodomat-nav__open {
+  transition: opacity .9s;
+}
+
+.foodomat-nav__option {
+  position: absolute;
+  border-radius: 100%;
+  border: black .5px solid;
+
+  height: 0;
+  width: 0;
+  opacity: 0;
+  transition:
+    transform .3s cubic-bezier(0.5, 0, 0.75, 0),
+    opacity .3s,
+    height .3s ease-out,
+    width .3s ease-out;
+
+  &.-active {
+    background-color: $dark-primary-color;
+  }
+
+  &:hover {
+    background-color: $dark-secondary-color;
+  }
 }
