@@ -7,7 +7,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model test {
-  id        BigInt   @id @default(autoincrement())
-  testValue String[] @db.Char
+model PlanableMonthEntity {
+  id        Int              @id @default(autoincrement())
+  month     Int
+  yeat      Int
+  planables PlanableEntity[]
+}
+
+model PlanableEntity {
+  id                 Int                 @id @default(autoincrement())
+  date               DateTime
+  recipeDboId        Int
+  planableMonthDboId Int
+  planableMonthDbo   PlanableMonthEntity @relation(fields: [planableMonthDboId], references: [id])
+  recipe             RecipeEntity        @relation(fields: [recipeDboId], references: [id])
+}
+
+model RecipeEntity {
+  id          Int                        @id @default(autoincrement())
+  name        String                     @unique
+  manual      String
+  ingredients IngredientInRecipeEntity[]
+  planable    PlanableEntity[]
+}
+
+model IngredientInRecipeEntity {
+  recipeId    Int
+  ingredintId Int
+  amount      Int
+  ingredient  IngredientEntity @relation(fields: [ingredintId], references: [id])
+  recipe      RecipeEntity     @relation(fields: [recipeId], references: [id])
+
+  @@id([recipeId, ingredintId])
+}
+
+model IngredientEntity {
+  id      Int                        @id @default(autoincrement())
+  name    String
+  unit    String
+  recipes IngredientInRecipeEntity[]
 }

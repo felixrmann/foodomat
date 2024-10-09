@@ -2,14 +2,14 @@ import { Controller, Get } from '@nestjs/common';
 import { PlannerService } from '../service/planner.service';
 import { Month, PlanableDto, PlanableMonthDto } from '../../../shared/contract';
 
-@Controller()
+@Controller('planner')
 export class PlannerController {
   constructor(
     private readonly plannerService: PlannerService
   ) {}
 
-  @Get()
-  getPlanble(date: Date): PlanableDto {
+  @Get('planable')
+  getPlanable(date: Date): PlanableDto {
     return {
       id: new Date().getMilliseconds(),
       date: date,
@@ -17,7 +17,7 @@ export class PlannerController {
     }
   }
 
-  @Get()
+  @Get('month')
   getMonth(month: Month): PlanableMonthDto {
     return {
       id: new Date().getMilliseconds(),
