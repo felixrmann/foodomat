@@ -1,28 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
-import { DatabaseService } from './service/database.service';
-import { PlannerService } from './service/planner.service';
-import configuration from '../config/configuration';
-import { PlannerController } from './controller/planner.controller';
+import { IngredientModule } from './ingredient/ingredient.module';
+import { DatabaseModule } from './database/database.module';
+import { LoggerModule } from './logger/logger.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      envFilePath: '../.env',
-      load: [configuration],
-    }),
+    IngredientModule,
+    DatabaseModule,
+    LoggerModule,
   ],
-  controllers: [AppController, PlannerController],
-  providers: [AppService, PlannerService, {
-    provide: DatabaseService,
-    useFactory: async () => {
-      const service: DatabaseService = new DatabaseService();
-      await service.initDatabase();
-      return service;
-    },
-  }],
 })
 export class AppModule {
 }

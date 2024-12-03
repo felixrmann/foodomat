@@ -7,28 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model PlanableMonthEntity {
-  id        Int              @id @default(autoincrement())
-  month     Int
-  yeat      Int
-  planables PlanableEntity[]
-}
-
-model PlanableEntity {
-  id                 Int                 @id @default(autoincrement())
-  date               DateTime
-  recipeDboId        Int
-  planableMonthDboId Int
-  planableMonthDbo   PlanableMonthEntity @relation(fields: [planableMonthDboId], references: [id])
-  recipe             RecipeEntity        @relation(fields: [recipeDboId], references: [id])
+model PlanEntity {
+  id           Int            @id @default(autoincrement())
+  date         DateTime
+  recipeEntity RecipeEntity[]
 }
 
 model RecipeEntity {
   id          Int                        @id @default(autoincrement())
   name        String                     @unique
   manual      String
+  image       Bytes                      @db.ByteA
+  src         String
   ingredients IngredientInRecipeEntity[]
-  planable    PlanableEntity[]
+  planable    PlanEntity[]
 }
 
 model IngredientInRecipeEntity {
@@ -43,7 +35,7 @@ model IngredientInRecipeEntity {
 
 model IngredientEntity {
   id      Int                        @id @default(autoincrement())
-  name    String
+  name    String                     @unique
   unit    String
   recipes IngredientInRecipeEntity[]
 }

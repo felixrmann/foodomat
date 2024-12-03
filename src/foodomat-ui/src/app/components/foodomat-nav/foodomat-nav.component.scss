@@ -12,10 +12,10 @@
 }
 
 .foodomat-nav__default {
-  height: 3em;
-  width: 3em;
+  height: 2em;
+  width: 2em;
   opacity: 1;
-  transition: opacity .9s;
+  //transition: opacity .9s;
 }
 
 .foodomat-nav__active {
@@ -46,6 +46,10 @@
     opacity: 1;
   }
 
+  .foodomat-nav__close {
+    transform: translate(0.5em, 0.5em);
+  }
+
   .foodomat-nav__settings {
     transform: translate(7.8em, 0.5em);
   }
@@ -60,22 +64,18 @@
 }
 
 .foodomat-nav__open {
-  transition: opacity .9s;
+  //transition: opacity .9s;
 }
 
 .foodomat-nav__option {
   position: absolute;
   border-radius: 100%;
-  border: black .5px solid;
+  border: $dark-primary-color .5px solid;
 
   height: 0;
   width: 0;
   opacity: 0;
-  transition:
-    transform .3s cubic-bezier(0.5, 0, 0.75, 0),
-    opacity .3s,
-    height .3s ease-out,
-    width .3s ease-out;
+  transition: transform .3s cubic-bezier(0.5, 0, 0.75, 0), opacity .3s, height .3s ease-out, width .3s ease-out;
 
   &.-active {
     background-color: $dark-primary-color;
