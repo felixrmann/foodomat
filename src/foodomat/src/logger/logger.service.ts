@@ -5,17 +5,21 @@ import { promises as fsPromises } from 'fs';
 
 @Injectable()
 export class LoggerService extends ConsoleLogger {
-
   async logToFile(entry: string) {
     const formattedEntry = `${Intl.DateTimeFormat('de-CH', {
-      dateStyle: 'short', timeStyle: 'short', timeZone: 'CET'
+      dateStyle: 'short',
+      timeStyle: 'short',
+      timeZone: 'CET',
     }).format(new Date())}\t${entry}\n`;
 
     try {
       if (!fs.existsSync(path.join(__dirname, '..', '..', 'logs'))) {
         await fsPromises.mkdir(path.join(__dirname, '..', '..', 'logs'));
       }
-      await fsPromises.appendFile(path.join(__dirname, '..', '..', 'logs', 'foodomat.log'), formattedEntry);
+      await fsPromises.appendFile(
+        path.join(__dirname, '..', '..', 'logs', 'foodomat.log'),
+        formattedEntry,
+      );
     } catch (e) {
       if (e instanceof Error) console.log(e.message);
     }
@@ -32,5 +36,4 @@ export class LoggerService extends ConsoleLogger {
     this.logToFile(entry).then();
     super.error(message, stackOrContext);
   }
-
 }

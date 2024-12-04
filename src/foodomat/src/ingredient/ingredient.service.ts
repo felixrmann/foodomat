@@ -4,9 +4,7 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class IngredientService {
-
-  constructor(private readonly databaseService: DatabaseService) {
-  }
+  constructor(private readonly databaseService: DatabaseService) {}
 
   public async findAll() {
     return this.databaseService.ingredientEntity.findMany();
@@ -19,7 +17,10 @@ export class IngredientService {
       },
     });
     if (result === null) {
-      throw new HttpException(`Cannot get ingredient with id: ${ id } because it doesn't exist.`, 422);
+      throw new HttpException(
+        `Cannot get ingredient with id: ${id} because it doesn't exist.`,
+        422,
+      );
     }
     return result;
   }
@@ -30,11 +31,17 @@ export class IngredientService {
         data: createIngredient,
       });
     } catch (e) {
-      throw new HttpException(`Cannot create ingredient because ingredient with name: ${ createIngredient.name } already exists.`, 422);
+      throw new HttpException(
+        `Cannot create ingredient because ingredient with name: ${createIngredient.name} already exists.`,
+        422,
+      );
     }
   }
 
-  public async update(id: number, updateIngredient: Prisma.IngredientEntityUpdateInput) {
+  public async update(
+    id: number,
+    updateIngredient: Prisma.IngredientEntityUpdateInput,
+  ) {
     try {
       return await this.databaseService.ingredientEntity.update({
         where: {
@@ -43,7 +50,10 @@ export class IngredientService {
         data: updateIngredient,
       });
     } catch (e) {
-      throw new HttpException(`Cannot update ingredient with id: ${ id } because it doesn\'t exist.`, 422);
+      throw new HttpException(
+        `Cannot update ingredient with id: ${id} because it doesn\'t exist.`,
+        422,
+      );
     }
   }
 
@@ -55,8 +65,10 @@ export class IngredientService {
         },
       });
     } catch (e) {
-      throw new HttpException(`Cannot delete ingredient with id: ${ id } because it doesn't exist.`, 422);
+      throw new HttpException(
+        `Cannot delete ingredient with id: ${id} because it doesn't exist.`,
+        422,
+      );
     }
   }
-
 }

@@ -13,6 +13,7 @@ src/foodomat/node_modules
 src/foodomat/dist
 src/foodomat/npm-debug.log
 src/foodomat/yarn-error.log
+src/foodomat/logs
 
 src/foodomat-ui/.angular
 src/foodomat-ui/node_modules
