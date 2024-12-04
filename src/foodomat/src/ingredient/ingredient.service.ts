@@ -4,7 +4,8 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class IngredientService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) {
+  }
 
   public async findAll() {
     return this.databaseService.ingredientEntity.findMany();
@@ -18,7 +19,7 @@ export class IngredientService {
     });
     if (result === null) {
       throw new HttpException(
-        `Cannot get ingredient with id: ${id} because it doesn't exist.`,
+        `Cannot get ingredient with id: ${ id } because it doesn't exist.`,
         422,
       );
     }
@@ -26,49 +27,28 @@ export class IngredientService {
   }
 
   public async create(createIngredient: Prisma.IngredientEntityCreateInput) {
-    try {
-      return await this.databaseService.ingredientEntity.create({
-        data: createIngredient,
-      });
-    } catch (e) {
-      throw new HttpException(
-        `Cannot create ingredient because ingredient with name: ${createIngredient.name} already exists.`,
-        422,
-      );
-    }
+    return this.databaseService.ingredientEntity.create({
+      data: createIngredient,
+    });
   }
 
   public async update(
     id: number,
     updateIngredient: Prisma.IngredientEntityUpdateInput,
   ) {
-    try {
-      return await this.databaseService.ingredientEntity.update({
-        where: {
-          id: id,
-        },
-        data: updateIngredient,
-      });
-    } catch (e) {
-      throw new HttpException(
-        `Cannot update ingredient with id: ${id} because it doesn\'t exist.`,
-        422,
-      );
-    }
+    return this.databaseService.ingredientEntity.update({
+      where: {
+        id: id,
+      },
+      data: updateIngredient,
+    });
   }
 
   public async delete(id: number) {
-    try {
-      return await this.databaseService.ingredientEntity.delete({
-        where: {
-          id: id,
-        },
-      });
-    } catch (e) {
-      throw new HttpException(
-        `Cannot delete ingredient with id: ${id} because it doesn't exist.`,
-        422,
-      );
-    }
+    return this.databaseService.ingredientEntity.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

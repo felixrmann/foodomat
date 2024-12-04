@@ -4,7 +4,8 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class RecipeService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) {
+  }
 
   public async findAll() {
     return this.databaseService.recipeEntity.findMany({
@@ -35,7 +36,7 @@ export class RecipeService {
     });
     if (result == null) {
       throw new HttpException(
-        `Cannot get recipe with id: ${id} because it doesn't exist.`,
+        `Cannot get recipe with id: ${ id } because it doesn't exist.`,
         422,
       );
     }
@@ -43,51 +44,28 @@ export class RecipeService {
   }
 
   public async create(createRecipe: Prisma.RecipeEntityCreateInput) {
-    try {
-      return await this.databaseService.recipeEntity.create({
-        data: createRecipe,
-      });
-    } catch (e) {
-      console.log(e);
-      throw new HttpException(
-        `Cannot create recipe because ingredient with name: ${createRecipe.name} already exists.`,
-        422,
-      );
-    }
+    return this.databaseService.recipeEntity.create({
+      data: createRecipe,
+    });
   }
 
   public async update(
     id: number,
     updateRecipe: Prisma.RecipeEntityUpdateInput,
   ) {
-    try {
-      return await this.databaseService.recipeEntity.update({
-        where: {
-          id: id,
-        },
-        data: updateRecipe,
-      });
-    } catch (e) {
-      throw new HttpException(
-        `Cannot update recipe with id: ${id} because it doesn\'t exist.`,
-        422,
-      );
-    }
+    return this.databaseService.recipeEntity.update({
+      where: {
+        id: id,
+      },
+      data: updateRecipe,
+    });
   }
 
   public async delete(id: number) {
-    try {
-      return await this.databaseService.recipeEntity.delete({
-        where: {
-          id: id,
-        },
-      });
-    } catch (e) {
-      console.log(e);
-      throw new HttpException(
-        `Cannot delete recipe with id: ${id} because it doesn't exist.`,
-        422,
-      );
-    }
+    return this.databaseService.recipeEntity.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

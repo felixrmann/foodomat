@@ -1,10 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class PlanService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) {
+  }
 
   public async findAll() {
     return this.databaseService.planEntity.findMany({
@@ -39,7 +40,7 @@ export class PlanService {
     });
     if (result == null) {
       throw new HttpException(
-        `Cannot get plan with id: ${id} because it doesn't exist.`,
+        `Cannot get plan with id: ${ id } because it doesn't exist.`,
         422,
       );
     }
@@ -47,47 +48,25 @@ export class PlanService {
   }
 
   public async create(createPlan: Prisma.PlanEntityCreateInput) {
-    try {
-      return await this.databaseService.planEntity.create({
-        data: createPlan,
-      });
-    } catch (e) {
-      console.log(e);
-      throw new HttpException(
-        `Some Error occurred.`,
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
-    }
+    return this.databaseService.planEntity.create({
+      data: createPlan,
+    });
   }
 
   public async update(id: number, updatePlan: Prisma.PlanEntityUpdateInput) {
-    try {
-      return await this.databaseService.planEntity.update({
-        where: {
-          id: id,
-        },
-        data: updatePlan,
-      });
-    } catch (e) {
-      throw new HttpException(
-        `Cannot update plan with id: ${id} because it doesn\'t exist.`,
-        422,
-      );
-    }
+    return this.databaseService.planEntity.update({
+      where: {
+        id: id,
+      },
+      data: updatePlan,
+    });
   }
 
   public async delete(id: number) {
-    try {
-      return await this.databaseService.planEntity.delete({
-        where: {
-          id: id,
-        },
-      });
-    } catch (e) {
-      throw new HttpException(
-        `Cannot delete plan with id: ${id} because it doesn't exist.`,
-        422,
-      );
-    }
+    return this.databaseService.planEntity.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

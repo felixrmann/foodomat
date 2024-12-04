@@ -7,6 +7,7 @@ import {
 import { BaseExceptionFilter } from '@nestjs/core';
 import { LoggerService } from './logger/logger.service';
 import { Request, Response } from 'express';
+import { PrismaClientKnownRequestError, PrismaClientValidationError } from '@prisma/client/runtime/library';
 
 type ResponseObj = {
   statusCode: number;
@@ -36,6 +37,9 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
     if (exception instanceof HttpException) {
       responseObj.statusCode = exception.getStatus();
       responseObj.response = exception.getResponse();
+    } else if (exception instanceof PrismaClientValidationError || exception instanceof PrismaClientKnownRequestError) {
+      responseObj.statusCode = 422;
+      responseObj.response = exception.message.replaceAll(/\n/g, '');
     } else {
       responseObj.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       responseObj.response = 'Internal Server Error';
