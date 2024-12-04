@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { PlanableMonth } from '../../types/planner.types';
 
 @Component({
   selector: 'foodomat-plan-list',
@@ -8,7 +7,5 @@ import { PlanableMonth } from '../../types/planner.types';
 })
 export class PlanListComponent {
 
-  @Input()
-  public activeMonth: PlanableMonth | null = null;
 
 }

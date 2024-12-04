@@ -1,7 +1,11 @@
 <header>
+  <!--
   <foodomat-nav></foodomat-nav>
+  -->
+
+  <a [href]="'/'">Main</a>
+  <a [href]="'/admin'">Admin</a>
   <h3>Foodomat</h3>
 </header>
 <div class="foodomat-main__custom-border"></div>
-<foodomat-plan-list
-></foodomat-plan-list>
+<router-outlet></router-outlet>
